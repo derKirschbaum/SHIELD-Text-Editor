@@ -1,0 +1,109 @@
+
+<div *ngIf="isOpenSavePasswordModal" style="display: flex; justify-content: center; align-content: center; position: absolute; top: 30%; width: 100%;">
+  <div style="background: white; width: 60%; padding: 5%; border-radius: 20px;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">Encrypt file?</h1>
+          </div>
+          <div class="modal-body">
+            This file is not encrypted. Would you like to encrypt this file? (Leave empty for no password)
+            <div class="mb-3">
+              <input type="password" class="form-control" id="OpenSavePassword" placeholder="Password" [(ngModel)]="password">
+            </div>
+    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="isOpenSavePasswordModal = false;">Cancel</button>
+            <button style="margin: 1vw;" type="button" class="btn btn-primary" (click)="openSaveWithNewPassword()">Save</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div *ngIf="isOpenAskForPasswordModal" style="display: flex; justify-content: center; align-content: center; position: absolute; top: 30%; width: 100%;">
+  <div style="background: white; width: 60%; padding: 5%; border-radius: 20px;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">Password?</h1>
+          </div>
+          <div class="modal-body">
+            This file is protected by password.
+              <div class="input-group mb-3">
+                <input type="password" class="form-control" [ngClass]="{'is-invalid' : isInvalidPassword}" id="OpenSavePassword" placeholder="Password" [(ngModel)]="password">
+                <div *ngIf="isInvalidPassword" class="invalid-feedback">
+                  Invalid password!
+                </div>
+              </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="isOpenAskForPasswordModal = false; showSpinner = false;">Cancel</button>
+            <button style="margin: 1vw;" type="button" class="btn btn-primary" (click)="openEncryptedFile()">Open</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div *ngIf="isNewAskForEncryption" style="display: flex; justify-content: center; align-content: center; position: absolute; top: 30%; width: 100%;">
+  <div style="background: white; width: 60%; padding: 5%; border-radius: 20px;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title">Encrypt file?</h1>
+          </div>
+          <div class="modal-body">
+            This file is not encrypted. Would you like to encrypt this file? (Leave empty for no password)
+            <div class="mb-3">
+              <input type="password" class="form-control" id="OpenSavePassword" placeholder="Password" [(ngModel)]="password">
+            </div>
+    
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="isNewAskForEncryption = false;">Cancel</button>
+            <button style="margin: 1vw;" type="button" class="btn btn-primary" (click)="saveNewFileWithPassword()">Save</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="welcome-page" style="background-color: #192A56;">
+  <div [ngStyle]="{'display' : showLanding ? 'block':'none'}">
+    <div class="logo">
+      <img src="./assets/Logo.png" alt="SHIELD logo" />
+      <br />
+      <b>WELCOME</b>
+    </div>
+    <br />
+    <div style="text-align: center">
+      <input type="file" style="display: none;" id="fileDialog" (change)="handleFileInput($event)">
+
+      <button type="button" id="modalTriggerOpenPassword" style="display: none;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropOpen">
+      </button>
+
+      <button type="button" id="modalTriggerSavePassword" style="display: none;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropSave">
+      </button>
+
+      <div style="display: flex; justify-content: center;">
+        <div class="spinner-border text-light" role="status" [ngStyle]="{'display' : showSpinner ? 'block': 'none'}">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <span class="open-btn" (click)="createNewFile()" [ngStyle]="{'display' : showSpinner ? 'none': 'contents'}">&gt;&gt; New file &lt;&lt;</span><br><br>
+      <span class="open-btn" (click)="openFileDialog()" [ngStyle]="{'display' : showSpinner ? 'none': 'contents'}">&gt;&gt; Open file &lt;&lt;</span>
+      
+    </div>
+  </div>
+
+  <div [ngStyle]="{'display' : showLanding ? 'none':'block'}">
+    <textarea class="text-area" name="text" id="text" [(ngModel)]="content" (ngModelChange)="this.updateChanges()"></textarea>
+  </div>
+  
+</div>
+
+
+

@@ -1,0 +1,66 @@
+body {
+    overflow: hidden;
+}
+
+.logo {
+    text-align: center;
+    color: #487EB0;
+    font-size: 50px;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    margin-top: 5vh;
+}
+
+.logo img {
+    width: 360px;
+}
+
+.open-btn {
+    text-align: center;
+    color:white;
+    font-family:'Segoe UI';
+    font-weight: bold;
+}
+
+@keyframes rainbowText {
+    0% {
+        color: #ffffff;
+    }
+    25% {
+        color: #0984e3;
+    }
+    50% {
+        color: #00cec9;
+    }
+    75% {
+        color: #ff7675;
+    }
+    100% {
+        color: #ffffff;
+    }
+}
+
+.open-btn {
+    width:fit-content;
+    text-align: center;
+}
+
+.open-btn:hover {
+    animation: rainbowText 1s linear infinite;
+    cursor: pointer;
+}
+
+.text-area {
+    background: none;
+    color: white;
+    border: none;
+    width: 100%; 
+    height: 95vh;
+    font-family: "Cascadia Code";
+    padding-left: 1vw;
+    resize: none;
+}
+
+.fileName {
+    color: white;
+}
