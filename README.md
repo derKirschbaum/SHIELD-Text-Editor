@@ -1,8 +1,8 @@
 # SHIELD Text Editor
 This project is part of ITCS461 Computer and Communication Security, Faculty of ICT, Mahidol University, TH.
 
-SHIELD Text Editor is a simple text editor that allow you to create/edit/encrypt/decrypt text file.
-The algorithm used for encryption is AES-256.
+SHIELD Text Editor is a simple text editor that allows you to create/edit/encrypt/decrypt text file.
+The algorithm used for encryption is AES-256 with custom password.
 
 ## Technologies used
 
